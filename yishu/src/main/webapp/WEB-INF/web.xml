@@ -17,6 +17,7 @@
   	 <url-pattern>/</url-pattern>
   </servlet-mapping>
   
+  <!-- 编码统一 -->
   <filter>
      <filter-name>encodingFilter</filter-name>
      <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -29,6 +30,17 @@
   <filter-mapping>
      <filter-name>encodingFilter</filter-name >
      <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 基础拦截器 -->
+  <filter>
+  	 <filter-name>commonFilter</filter-name>
+  	 <filter-class>com.ytl.yshu.filter.CommonFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	 <filter-name>commonFilter</filter-name>
+  	 <url-pattern>/*</url-pattern>
   </filter-mapping>
   
    <!-- 出错页面定义   -->
