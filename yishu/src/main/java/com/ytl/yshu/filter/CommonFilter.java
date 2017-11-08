@@ -9,6 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+import org.apache.log4j.Logger;
+
 /**
  * Author: HueYoung
  * E-mail: hueyoung@foxmail.com
@@ -17,6 +19,8 @@ import javax.servlet.ServletResponse;
  * Description : 基础拦截器
  */
 public class CommonFilter implements Filter {
+	
+	private static Logger logger = Logger.getLogger(CommonFilter.class);
 
 	public void destroy() {
 		// TODO Auto-generated method stub
@@ -26,7 +30,9 @@ public class CommonFilter implements Filter {
 	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
+		logger.info("conmonFilter get");
 		System.out.println("conmonFilter get");
+		
 	}
 
 	public void init(FilterConfig arg0) throws ServletException {
