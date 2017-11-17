@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+ <configuration>
+	<!--引入外部properties文件  -->
+ 	<properties resource="config.properties"></properties><!-- 加载配置文件 --> 
+ 	
+ 	<!-- 扫描po类 设置别别方便mapper引用
+ 	<typeAliases>
+ 		<package name="springmvc.po"/>
+ 	</typeAliases>
+ 	
+	  <environments default="development">
+	    <environment id="development">
+	      <transactionManager type="JDBC"/>
+	      <dataSource type="POOLED">
+	        <property name="driver" value="${driverClassName}"/>
+	        <property name="url" value="${jdbc_url}"/>
+	        <property name="username" value="${jdbc_username}"/>
+	        <property name="password" value="${jdbc_password}"/>
+	      </dataSource>
+	    </environment>
+	  </environments>
+	  
+	  <mappers>
+	  
+	  	 	 <mapper resource="mapper/userMapper.xml"/>
+	    
+	   		这里可以用扫描包的方式实现加载mapper配置文件
+	   		满足条件：1.必须是使用mapper代理  2.mapper接口和mapper配置文件同名，同目录
+		     <mapper resource="mapper/userMapper2.xml"/>
+	   
+	   <package name="springmvc.mapper"/>
+	  </mappers>-->
+</configuration>
