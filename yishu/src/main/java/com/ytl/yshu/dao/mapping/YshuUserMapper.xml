@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ytl.mybatis.mapper.YshuUserMapper">
-  <resultMap id="BaseResultMap" type="com.ytl.mybatis.po.YshuUser">
+<mapper namespace="com.ytl.yshu.dao.YshuUserMapper">
+  <resultMap id="BaseResultMap" type="com.ytl.yshu.dao.po.YshuUser">
     <id column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="psw" jdbcType="VARCHAR" property="psw" />
     <result column="last_login" jdbcType="TIMESTAMP" property="lastLogin" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List">
     user_id, psw, last_login
   </sql>
-  <select id="selectByExample" parameterType="com.ytl.mybatis.po.YshuUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.ytl.yshu.dao.po.YshuUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -91,19 +91,19 @@
     delete from yshu_user
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.ytl.mybatis.po.YshuUserExample">
+  <delete id="deleteByExample" parameterType="com.ytl.yshu.dao.po.YshuUserExample">
     delete from yshu_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.ytl.mybatis.po.YshuUser">
+  <insert id="insert" parameterType="com.ytl.yshu.dao.po.YshuUser">
     insert into yshu_user (user_id, psw, last_login
       )
     values (#{userId,jdbcType=INTEGER}, #{psw,jdbcType=VARCHAR}, #{lastLogin,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.ytl.mybatis.po.YshuUser">
+  <insert id="insertSelective" parameterType="com.ytl.yshu.dao.po.YshuUser">
     insert into yshu_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.ytl.mybatis.po.YshuUserExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.ytl.yshu.dao.po.YshuUserExample" resultType="java.lang.Long">
     select count(*) from yshu_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ytl.mybatis.po.YshuUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.ytl.yshu.dao.po.YshuUser">
     update yshu_user
     <set>
       <if test="psw != null">
@@ -172,7 +172,7 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ytl.mybatis.po.YshuUser">
+  <update id="updateByPrimaryKey" parameterType="com.ytl.yshu.dao.po.YshuUser">
     update yshu_user
     set psw = #{psw,jdbcType=VARCHAR},
       last_login = #{lastLogin,jdbcType=TIMESTAMP}

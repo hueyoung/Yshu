@@ -23,6 +23,11 @@
     <context:component-scan base-package="com.ytl.yshu"/>
     <mvc:annotation-driven />
     
+    <!-- 自动扫描(自动注入),不扫描带有@Controller注解的类。因为这些类已经随容器启动时,在servlet-context中扫描过一遍了 -->  
+	<!-- <context:component-scan base-package="com.ytl.yshu">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>  
+	</context:component-scan> -->
+    
     <!-- mybatis配置 -->
 	<!-- 配置数据源 TODO配置了durid不知道是否带了自动扫描功能，随容器启动扫描一次-->
 	<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">

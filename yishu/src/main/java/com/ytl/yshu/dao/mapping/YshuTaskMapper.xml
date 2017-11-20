@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ytl.mybatis.mapper.YshuTaskMapper">
-  <resultMap id="BaseResultMap" type="com.ytl.mybatis.po.YshuTask">
+<mapper namespace="com.ytl.yshu.dao.YshuTaskMapper">
+  <resultMap id="BaseResultMap" type="com.ytl.yshu.dao.po.YshuTask">
     <id column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="send_time" jdbcType="INTEGER" property="sendTime" />
     <result column="send_phone" jdbcType="INTEGER" property="sendPhone" />
     <result column="state" jdbcType="INTEGER" property="state" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ytl.mybatis.po.YshuTask">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ytl.yshu.dao.po.YshuTask">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -74,7 +74,7 @@
   <sql id="Blob_Column_List">
     content
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.ytl.mybatis.po.YshuTaskExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="com.ytl.yshu.dao.po.YshuTaskExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -90,7 +90,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.ytl.mybatis.po.YshuTaskExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.ytl.yshu.dao.po.YshuTaskExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -116,19 +116,19 @@
     delete from yshu_task
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.ytl.mybatis.po.YshuTaskExample">
+  <delete id="deleteByExample" parameterType="com.ytl.yshu.dao.po.YshuTaskExample">
     delete from yshu_task
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.ytl.mybatis.po.YshuTask">
+  <insert id="insert" parameterType="com.ytl.yshu.dao.po.YshuTask">
     insert into yshu_task (user_id, send_time, send_phone, 
       state, content)
     values (#{userId,jdbcType=INTEGER}, #{sendTime,jdbcType=INTEGER}, #{sendPhone,jdbcType=INTEGER}, 
       #{state,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.ytl.mybatis.po.YshuTask">
+  <insert id="insertSelective" parameterType="com.ytl.yshu.dao.po.YshuTask">
     insert into yshu_task
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -165,7 +165,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.ytl.mybatis.po.YshuTaskExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.ytl.yshu.dao.po.YshuTaskExample" resultType="java.lang.Long">
     select count(*) from yshu_task
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -215,7 +215,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ytl.mybatis.po.YshuTask">
+  <update id="updateByPrimaryKeySelective" parameterType="com.ytl.yshu.dao.po.YshuTask">
     update yshu_task
     <set>
       <if test="sendTime != null">
@@ -233,7 +233,7 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ytl.mybatis.po.YshuTask">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ytl.yshu.dao.po.YshuTask">
     update yshu_task
     set send_time = #{sendTime,jdbcType=INTEGER},
       send_phone = #{sendPhone,jdbcType=INTEGER},
@@ -241,7 +241,7 @@
       content = #{content,jdbcType=LONGVARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ytl.mybatis.po.YshuTask">
+  <update id="updateByPrimaryKey" parameterType="com.ytl.yshu.dao.po.YshuTask">
     update yshu_task
     set send_time = #{sendTime,jdbcType=INTEGER},
       send_phone = #{sendPhone,jdbcType=INTEGER},

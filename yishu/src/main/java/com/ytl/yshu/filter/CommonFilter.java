@@ -27,12 +27,13 @@ public class CommonFilter implements Filter {
 		
 	}
 
-	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		logger.info("conmonFilter get");
+		logger.info("conmonFilter get 》》》》》》》》》 ");
 		System.out.println("conmonFilter get");
-		
+		request.setCharacterEncoding("utf-8");
+		chain.doFilter(request, response);
 	}
 
 	public void init(FilterConfig arg0) throws ServletException {
