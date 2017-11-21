@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-11-13 14:02:37
+Date: 2017-11-21 14:41:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -40,6 +40,7 @@ CREATE TABLE `yshu_user` (
   `user_id` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT COMMENT '主键',
   `psw` varchar(11) DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
+  `login_type` int(2) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
