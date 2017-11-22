@@ -9,6 +9,8 @@ public class YshuUser {
 
     private Date lastLogin;
 
+    private Integer loginType;
+
     public Integer getUserId() {
         return userId;
     }
@@ -31,5 +33,13 @@ public class YshuUser {
 
     public void setLastLogin(Date lastLogin) {
         this.lastLogin = lastLogin;
+    }
+
+    public Integer getLoginType() {
+        return loginType;
+    }
+
+    public void setLoginType(Integer loginType) {
+        this.loginType = loginType;
     }
 }

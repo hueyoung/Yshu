@@ -3,6 +3,7 @@ package com.ytl.yshu.service;
 import java.util.Map;
 
 import com.ytl.yshu.common.model.ReData;
+import com.ytl.yshu.common.model.param.RegisterModel;
 
 /**
  * Author: HueYoung
@@ -13,6 +14,12 @@ import com.ytl.yshu.common.model.ReData;
  */
 public interface UserService {
 
+	/**
+	 * 用户注册
+	 * @return
+	 */
+	public ReData<Map<String, Object>> register(RegisterModel registerModel);
+	
 	/**
 	 * 用户登录
 	 * @return

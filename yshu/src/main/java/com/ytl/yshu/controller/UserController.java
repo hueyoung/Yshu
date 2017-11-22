@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ytl.yshu.common.model.ReData;
+import com.ytl.yshu.common.model.param.RegisterModel;
 import com.ytl.yshu.service.UserService;
 
 /**
@@ -20,14 +21,20 @@ import com.ytl.yshu.service.UserService;
  */
 
 @Controller
-@RequestMapping("user")
+@RequestMapping("api/user")
 public class UserController {
 
 	@Autowired
 	UserService userService;
+	
+	@ResponseBody
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ReData<Map<String, Object>> register(RegisterModel registerModel) {
+		return userService.register(registerModel);
+	}
 
 	@ResponseBody
-	@RequestMapping(value = "login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ReData<Map<String, Object>> login(int user_id, String psw) {
 		return userService.login(user_id, psw);
 	}
