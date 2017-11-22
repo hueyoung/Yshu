@@ -19,7 +19,7 @@ import com.ytl.yshu.util.TextUtils;
  * E-mail: hueyoung@foxmail.com
  * Date: 2017年11月17日
  * <p/>
- * Description : 
+ * Description : 用户操作业务实现类
  */
 @Service
 public class UserImpl extends BaseImpl implements UserService {
@@ -31,18 +31,19 @@ public class UserImpl extends BaseImpl implements UserService {
 	public ReData<Map<String, Object>> login(int userId, String psw) {
 		Map<String, Object> reMap = new HashMap<String, Object>();
 		ReData<Map<String, Object>> reData = new ReData<Map<String, Object>>();
-		if (userId <= 0) {
-			requestFail(reData, "登录失败！", reMap, "用户名无效！");
-		} else if (TextUtils.isEmpty(psw)) {
-			requestFail(reData, "登录失败！", reMap, "密码不正确！");
-		}
 		try {
-			YshuUser ys = yShuUserMapper.selectByPrimaryKey(userId);
-			if (ys != null) {
-				reMap.put("userId", ys.getUserId());
-				requestSuccess(reData, "登录成功", reMap, null);
+			if (userId <= 0) {
+				requestFail(reData, "登录失败！", reMap, "用户名无效！");
+			} else if (TextUtils.isEmpty(psw)) {
+				requestFail(reData, "登录失败！", reMap, "密码不正确！");
 			} else {
-				requestFail(reData, "登录失败！", reMap, null);
+				YshuUser ys = yShuUserMapper.selectByPrimaryKey(userId);
+				if (ys != null && psw.equals(ys.getPsw())) {
+					reMap.put("userId", ys.getUserId());
+					requestSuccess(reData, "登录成功", reMap, null);
+				} else {
+					requestFail(reData, "登录失败！", reMap, "用户名或密码错误！");
+				}
 			}
 		} catch(Exception e) {
 			requestFail(reData, "登录失败！", reMap, e.getMessage());
@@ -55,17 +56,21 @@ public class UserImpl extends BaseImpl implements UserService {
 		Map<String, Object> reMap = new HashMap<String, Object>();
 		ReData<Map<String, Object>> reData = new ReData<Map<String, Object>>();
 		YshuUser ys = new YshuUser();
-		ys.setUserId(registerModel.getUserId());
-		ys.setPsw(registerModel.getPsw());
-		ys.setLoginType(registerModel.getLoginType());
-		ys.setLastLogin(registerModel.getLastLogin());
 		try {
-			int state = yShuUserMapper.insert(ys);
-			if (state == 0) {
-				requestFail(reData, "注册失败！", reMap, null);
+			if (registerModel.getUserId() <= 0 || TextUtils.isEmpty(registerModel.getPsw())) {
+				requestFail(reData, "注册失败！", reMap, "请输入有效用户名或密码！");
 			} else {
-				reMap.put("userId", ys.getUserId());
-				requestSuccess(reData, "注册成功！", reMap, null);
+				ys.setUserId(registerModel.getUserId());
+				ys.setPsw(registerModel.getPsw());
+				ys.setLoginType(registerModel.getLoginType());
+				ys.setLastLogin(registerModel.getLastLogin());
+				int state = yShuUserMapper.insert(ys);
+				if (state == 0) {
+					requestFail(reData, "注册失败！", reMap, null);
+				} else {
+					reMap.put("userId", ys.getUserId());
+					requestSuccess(reData, "注册成功！", reMap, null);
+				}
 			}
 		} catch(Exception e) {
 			requestFail(reData, "注册失败！", reMap, e.getMessage());
