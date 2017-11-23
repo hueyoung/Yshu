@@ -1,7 +1,5 @@
 package com.ytl.yshu.common.model.param;
 
-import java.util.Date;
-
 /**
  * Author: HueYoung
  * E-mail: hueyoung@foxmail.com
@@ -11,27 +9,27 @@ import java.util.Date;
  */
 public class RegisterModel {
 
-	private int userId;
+	private String userId;
 	
-	private int loginType;
+	private String loginType;
 
     private String psw;
     
-    private Date lastLogin;
+    private long lastLogin;
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-	public int getLoginType() {
+	public String getLoginType() {
 		return loginType;
 	}
 
-	public void setLoginType(int loginType) {
+	public void setLoginType(String loginType) {
 		this.loginType = loginType;
 	}
 
@@ -43,11 +41,11 @@ public class RegisterModel {
 		this.psw = psw;
 	}
 
-	public Date getLastLogin() {
+	public long getLastLogin() {
 		return lastLogin;
 	}
 
-	public void setLastLogin(Date lastLogin) {
+	public void setLastLogin(long lastLogin) {
 		this.lastLogin = lastLogin;
 	}
 }

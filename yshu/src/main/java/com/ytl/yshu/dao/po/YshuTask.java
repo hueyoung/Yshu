@@ -1,46 +1,46 @@
 package com.ytl.yshu.dao.po;
 
 public class YshuTask {
-    private Integer userId;
+    private String userId;
 
-    private Integer sendTime;
+    private Long sendTime;
 
-    private Integer sendPhone;
+    private String sendPhone;
 
-    private Integer state;
+    private String state;
 
     private String content;
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
-    public Integer getSendTime() {
+    public Long getSendTime() {
         return sendTime;
     }
 
-    public void setSendTime(Integer sendTime) {
+    public void setSendTime(Long sendTime) {
         this.sendTime = sendTime;
     }
 
-    public Integer getSendPhone() {
+    public String getSendPhone() {
         return sendPhone;
     }
 
-    public void setSendPhone(Integer sendPhone) {
-        this.sendPhone = sendPhone;
+    public void setSendPhone(String sendPhone) {
+        this.sendPhone = sendPhone == null ? null : sendPhone.trim();
     }
 
-    public Integer getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(Integer state) {
-        this.state = state;
+    public void setState(String state) {
+        this.state = state == null ? null : state.trim();
     }
 
     public String getContent() {

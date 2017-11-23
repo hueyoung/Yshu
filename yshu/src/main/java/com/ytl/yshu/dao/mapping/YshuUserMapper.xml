@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ytl.yshu.dao.YshuUserMapper">
   <resultMap id="BaseResultMap" type="com.ytl.yshu.dao.po.YshuUser">
-    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="psw" jdbcType="VARCHAR" property="psw" />
-    <result column="last_login" jdbcType="TIMESTAMP" property="lastLogin" />
-    <result column="login_type" jdbcType="INTEGER" property="loginType" />
+    <result column="last_login" jdbcType="BIGINT" property="lastLogin" />
+    <result column="login_type" jdbcType="VARCHAR" property="loginType" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -82,15 +82,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from yshu_user
-    where user_id = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from yshu_user
-    where user_id = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.ytl.yshu.dao.po.YshuUserExample">
     delete from yshu_user
@@ -101,8 +101,8 @@
   <insert id="insert" parameterType="com.ytl.yshu.dao.po.YshuUser">
     insert into yshu_user (user_id, psw, last_login, 
       login_type)
-    values (#{userId,jdbcType=INTEGER}, #{psw,jdbcType=VARCHAR}, #{lastLogin,jdbcType=TIMESTAMP}, 
-      #{loginType,jdbcType=INTEGER})
+    values (#{userId,jdbcType=VARCHAR}, #{psw,jdbcType=VARCHAR}, #{lastLogin,jdbcType=BIGINT}, 
+      #{loginType,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ytl.yshu.dao.po.YshuUser">
     insert into yshu_user
@@ -122,16 +122,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="psw != null">
         #{psw,jdbcType=VARCHAR},
       </if>
       <if test="lastLogin != null">
-        #{lastLogin,jdbcType=TIMESTAMP},
+        #{lastLogin,jdbcType=BIGINT},
       </if>
       <if test="loginType != null">
-        #{loginType,jdbcType=INTEGER},
+        #{loginType,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -145,16 +145,16 @@
     update yshu_user
     <set>
       <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
       <if test="record.psw != null">
         psw = #{record.psw,jdbcType=VARCHAR},
       </if>
       <if test="record.lastLogin != null">
-        last_login = #{record.lastLogin,jdbcType=TIMESTAMP},
+        last_login = #{record.lastLogin,jdbcType=BIGINT},
       </if>
       <if test="record.loginType != null">
-        login_type = #{record.loginType,jdbcType=INTEGER},
+        login_type = #{record.loginType,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -163,10 +163,10 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update yshu_user
-    set user_id = #{record.userId,jdbcType=INTEGER},
+    set user_id = #{record.userId,jdbcType=VARCHAR},
       psw = #{record.psw,jdbcType=VARCHAR},
-      last_login = #{record.lastLogin,jdbcType=TIMESTAMP},
-      login_type = #{record.loginType,jdbcType=INTEGER}
+      last_login = #{record.lastLogin,jdbcType=BIGINT},
+      login_type = #{record.loginType,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -178,19 +178,19 @@
         psw = #{psw,jdbcType=VARCHAR},
       </if>
       <if test="lastLogin != null">
-        last_login = #{lastLogin,jdbcType=TIMESTAMP},
+        last_login = #{lastLogin,jdbcType=BIGINT},
       </if>
       <if test="loginType != null">
-        login_type = #{loginType,jdbcType=INTEGER},
+        login_type = #{loginType,jdbcType=VARCHAR},
       </if>
     </set>
-    where user_id = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ytl.yshu.dao.po.YshuUser">
     update yshu_user
     set psw = #{psw,jdbcType=VARCHAR},
-      last_login = #{lastLogin,jdbcType=TIMESTAMP},
-      login_type = #{loginType,jdbcType=INTEGER}
-    where user_id = #{userId,jdbcType=INTEGER}
+      last_login = #{lastLogin,jdbcType=BIGINT},
+      login_type = #{loginType,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>

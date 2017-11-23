@@ -28,13 +28,13 @@ public class UserImpl extends BaseImpl implements UserService {
 	private YshuUserMapper yShuUserMapper;
 	
 	/** 用户登录 */
-	public ReData<Map<String, Object>> login(int userId, String psw) {
+	public ReData<Map<String, Object>> login(String userId, String psw) {
 		Map<String, Object> reMap = new HashMap<String, Object>();
 		ReData<Map<String, Object>> reData = new ReData<Map<String, Object>>();
 		try {
-			if (userId <= 0) {
+			if (!TextUtils.isMobileNO(userId)) {
 				requestFail(reData, "登录失败！", reMap, "用户名无效！");
-			} else if (TextUtils.isEmpty(psw)) {
+			} else if (TextUtils.isErrorPsw(psw)) {
 				requestFail(reData, "登录失败！", reMap, "密码不正确！");
 			} else {
 				YshuUser ys = yShuUserMapper.selectByPrimaryKey(userId);
@@ -57,7 +57,7 @@ public class UserImpl extends BaseImpl implements UserService {
 		ReData<Map<String, Object>> reData = new ReData<Map<String, Object>>();
 		YshuUser ys = new YshuUser();
 		try {
-			if (registerModel.getUserId() <= 0 || TextUtils.isEmpty(registerModel.getPsw())) {
+			if (!TextUtils.isMobileNO(registerModel.getUserId()) || TextUtils.isErrorPsw(registerModel.getPsw())) {
 				requestFail(reData, "注册失败！", reMap, "请输入有效用户名或密码！");
 			} else {
 				ys.setUserId(registerModel.getUserId());
@@ -67,7 +67,7 @@ public class UserImpl extends BaseImpl implements UserService {
 				int state = yShuUserMapper.insert(ys);
 				if (state == 0) {
 					requestFail(reData, "注册失败！", reMap, null);
-				} else {
+				} else if (state > 0){
 					reMap.put("userId", ys.getUserId());
 					requestSuccess(reData, "注册成功！", reMap, null);
 				}

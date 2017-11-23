@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ytl.yshu.dao.YshuTaskMapper">
   <resultMap id="BaseResultMap" type="com.ytl.yshu.dao.po.YshuTask">
-    <id column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="send_time" jdbcType="INTEGER" property="sendTime" />
-    <result column="send_phone" jdbcType="INTEGER" property="sendPhone" />
-    <result column="state" jdbcType="INTEGER" property="state" />
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="send_time" jdbcType="BIGINT" property="sendTime" />
+    <result column="send_phone" jdbcType="VARCHAR" property="sendPhone" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ytl.yshu.dao.po.YshuTask">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
@@ -104,17 +104,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from yshu_task
-    where user_id = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from yshu_task
-    where user_id = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.ytl.yshu.dao.po.YshuTaskExample">
     delete from yshu_task
@@ -125,8 +125,15 @@
   <insert id="insert" parameterType="com.ytl.yshu.dao.po.YshuTask">
     insert into yshu_task (user_id, send_time, send_phone, 
       state, content)
-    values (#{userId,jdbcType=INTEGER}, #{sendTime,jdbcType=INTEGER}, #{sendPhone,jdbcType=INTEGER}, 
-      #{state,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+    values (#{userId,jdbcType=VARCHAR}, #{sendTime,jdbcType=BIGINT}, #{sendPhone,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <!-- 插入或更新 -->
+  <insert id="replace" parameterType="com.ytl.yshu.dao.po.YshuTask">
+    replace into yshu_task (user_id, send_time, send_phone, 
+      state, content)
+    values (#{userId,jdbcType=VARCHAR}, #{sendTime,jdbcType=BIGINT}, #{sendPhone,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ytl.yshu.dao.po.YshuTask">
     insert into yshu_task
@@ -149,16 +156,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="sendTime != null">
-        #{sendTime,jdbcType=INTEGER},
+        #{sendTime,jdbcType=BIGINT},
       </if>
       <if test="sendPhone != null">
-        #{sendPhone,jdbcType=INTEGER},
+        #{sendPhone,jdbcType=VARCHAR},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
         #{content,jdbcType=LONGVARCHAR},
@@ -175,16 +182,16 @@
     update yshu_task
     <set>
       <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
       <if test="record.sendTime != null">
-        send_time = #{record.sendTime,jdbcType=INTEGER},
+        send_time = #{record.sendTime,jdbcType=BIGINT},
       </if>
       <if test="record.sendPhone != null">
-        send_phone = #{record.sendPhone,jdbcType=INTEGER},
+        send_phone = #{record.sendPhone,jdbcType=VARCHAR},
       </if>
       <if test="record.state != null">
-        state = #{record.state,jdbcType=INTEGER},
+        state = #{record.state,jdbcType=VARCHAR},
       </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=LONGVARCHAR},
@@ -196,10 +203,10 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update yshu_task
-    set user_id = #{record.userId,jdbcType=INTEGER},
-      send_time = #{record.sendTime,jdbcType=INTEGER},
-      send_phone = #{record.sendPhone,jdbcType=INTEGER},
-      state = #{record.state,jdbcType=INTEGER},
+    set user_id = #{record.userId,jdbcType=VARCHAR},
+      send_time = #{record.sendTime,jdbcType=BIGINT},
+      send_phone = #{record.sendPhone,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -207,10 +214,10 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update yshu_task
-    set user_id = #{record.userId,jdbcType=INTEGER},
-      send_time = #{record.sendTime,jdbcType=INTEGER},
-      send_phone = #{record.sendPhone,jdbcType=INTEGER},
-      state = #{record.state,jdbcType=INTEGER}
+    set user_id = #{record.userId,jdbcType=VARCHAR},
+      send_time = #{record.sendTime,jdbcType=BIGINT},
+      send_phone = #{record.sendPhone,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -219,33 +226,33 @@
     update yshu_task
     <set>
       <if test="sendTime != null">
-        send_time = #{sendTime,jdbcType=INTEGER},
+        send_time = #{sendTime,jdbcType=BIGINT},
       </if>
       <if test="sendPhone != null">
-        send_phone = #{sendPhone,jdbcType=INTEGER},
+        send_phone = #{sendPhone,jdbcType=VARCHAR},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where user_id = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ytl.yshu.dao.po.YshuTask">
     update yshu_task
-    set send_time = #{sendTime,jdbcType=INTEGER},
-      send_phone = #{sendPhone,jdbcType=INTEGER},
-      state = #{state,jdbcType=INTEGER},
+    set send_time = #{sendTime,jdbcType=BIGINT},
+      send_phone = #{sendPhone,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
       content = #{content,jdbcType=LONGVARCHAR}
-    where user_id = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ytl.yshu.dao.po.YshuTask">
     update yshu_task
-    set send_time = #{sendTime,jdbcType=INTEGER},
-      send_phone = #{sendPhone,jdbcType=INTEGER},
-      state = #{state,jdbcType=INTEGER}
-    where user_id = #{userId,jdbcType=INTEGER}
+    set send_time = #{sendTime,jdbcType=BIGINT},
+      send_phone = #{sendPhone,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>

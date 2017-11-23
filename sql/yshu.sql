@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-11-21 14:41:30
+Date: 2017-11-23 15:34:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,11 +20,11 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `yshu_task`;
 CREATE TABLE `yshu_task` (
-  `user_id` int(11) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
   `content` text,
-  `send_time` int(11) DEFAULT NULL,
-  `send_phone` int(11) DEFAULT NULL,
-  `state` int(2) DEFAULT NULL,
+  `send_time` bigint(20) DEFAULT NULL,
+  `send_phone` varchar(15) DEFAULT NULL,
+  `state` varchar(2) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -37,13 +37,14 @@ CREATE TABLE `yshu_task` (
 -- ----------------------------
 DROP TABLE IF EXISTS `yshu_user`;
 CREATE TABLE `yshu_user` (
-  `user_id` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `psw` varchar(11) DEFAULT NULL,
-  `last_login` datetime DEFAULT NULL,
-  `login_type` int(2) DEFAULT NULL,
+  `user_id` varchar(20) NOT NULL COMMENT '主键',
+  `psw` varchar(16) DEFAULT NULL,
+  `last_login` bigint(20) DEFAULT NULL,
+  `login_type` varchar(2) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of yshu_user
 -- ----------------------------
+

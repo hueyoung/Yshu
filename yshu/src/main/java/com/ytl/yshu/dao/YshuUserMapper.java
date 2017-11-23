@@ -10,7 +10,7 @@ public interface YshuUserMapper {
 
     int deleteByExample(YshuUserExample example);
 
-    int deleteByPrimaryKey(Integer userId);
+    int deleteByPrimaryKey(String userId);
 
     int insert(YshuUser record);
 
@@ -18,7 +18,7 @@ public interface YshuUserMapper {
 
     List<YshuUser> selectByExample(YshuUserExample example);
 
-    YshuUser selectByPrimaryKey(Integer userId);
+    YshuUser selectByPrimaryKey(String userId);
 
     int updateByExampleSelective(@Param("record") YshuUser record, @Param("example") YshuUserExample example);
 

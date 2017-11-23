@@ -24,5 +24,5 @@ public interface UserService {
 	 * 用户登录
 	 * @return
 	 */
-	public ReData<Map<String, Object>> login(int userId, String psw);
+	public ReData<Map<String, Object>> login(String userId, String psw);
 }

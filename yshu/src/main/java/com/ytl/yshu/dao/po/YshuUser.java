@@ -1,22 +1,20 @@
 package com.ytl.yshu.dao.po;
 
-import java.util.Date;
-
 public class YshuUser {
-    private Integer userId;
+    private String userId;
 
     private String psw;
 
-    private Date lastLogin;
+    private Long lastLogin;
 
-    private Integer loginType;
+    private String loginType;
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public String getPsw() {
@@ -27,19 +25,19 @@ public class YshuUser {
         this.psw = psw == null ? null : psw.trim();
     }
 
-    public Date getLastLogin() {
+    public Long getLastLogin() {
         return lastLogin;
     }
 
-    public void setLastLogin(Date lastLogin) {
+    public void setLastLogin(Long lastLogin) {
         this.lastLogin = lastLogin;
     }
 
-    public Integer getLoginType() {
+    public String getLoginType() {
         return loginType;
     }
 
-    public void setLoginType(Integer loginType) {
-        this.loginType = loginType;
+    public void setLoginType(String loginType) {
+        this.loginType = loginType == null ? null : loginType.trim();
     }
 }

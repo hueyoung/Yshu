@@ -10,7 +10,7 @@ public interface YshuTaskMapper {
 
     int deleteByExample(YshuTaskExample example);
 
-    int deleteByPrimaryKey(Integer userId);
+    int deleteByPrimaryKey(String userId);
 
     int insert(YshuTask record);
 
@@ -20,7 +20,7 @@ public interface YshuTaskMapper {
 
     List<YshuTask> selectByExample(YshuTaskExample example);
 
-    YshuTask selectByPrimaryKey(Integer userId);
+    YshuTask selectByPrimaryKey(String userId);
 
     int updateByExampleSelective(@Param("record") YshuTask record, @Param("example") YshuTaskExample example);
 
@@ -33,4 +33,7 @@ public interface YshuTaskMapper {
     int updateByPrimaryKeyWithBLOBs(YshuTask record);
 
     int updateByPrimaryKey(YshuTask record);
+    
+    /** 不存在插入，存在更新 */
+    int replace(YshuTask record);
 }

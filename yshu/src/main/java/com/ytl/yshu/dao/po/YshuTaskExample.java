@@ -114,52 +114,62 @@ public class YshuTaskExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserIdEqualTo(Integer value) {
+        public Criteria andUserIdEqualTo(String value) {
             addCriterion("user_id =", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotEqualTo(Integer value) {
+        public Criteria andUserIdNotEqualTo(String value) {
             addCriterion("user_id <>", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThan(Integer value) {
+        public Criteria andUserIdGreaterThan(String value) {
             addCriterion("user_id >", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andUserIdGreaterThanOrEqualTo(String value) {
             addCriterion("user_id >=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThan(Integer value) {
+        public Criteria andUserIdLessThan(String value) {
             addCriterion("user_id <", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThanOrEqualTo(Integer value) {
+        public Criteria andUserIdLessThanOrEqualTo(String value) {
             addCriterion("user_id <=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIn(List<Integer> values) {
+        public Criteria andUserIdLike(String value) {
+            addCriterion("user_id like", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotLike(String value) {
+            addCriterion("user_id not like", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIn(List<String> values) {
             addCriterion("user_id in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotIn(List<Integer> values) {
+        public Criteria andUserIdNotIn(List<String> values) {
             addCriterion("user_id not in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdBetween(Integer value1, Integer value2) {
+        public Criteria andUserIdBetween(String value1, String value2) {
             addCriterion("user_id between", value1, value2, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andUserIdNotBetween(String value1, String value2) {
             addCriterion("user_id not between", value1, value2, "userId");
             return (Criteria) this;
         }
@@ -174,52 +184,52 @@ public class YshuTaskExample {
             return (Criteria) this;
         }
 
-        public Criteria andSendTimeEqualTo(Integer value) {
+        public Criteria andSendTimeEqualTo(Long value) {
             addCriterion("send_time =", value, "sendTime");
             return (Criteria) this;
         }
 
-        public Criteria andSendTimeNotEqualTo(Integer value) {
+        public Criteria andSendTimeNotEqualTo(Long value) {
             addCriterion("send_time <>", value, "sendTime");
             return (Criteria) this;
         }
 
-        public Criteria andSendTimeGreaterThan(Integer value) {
+        public Criteria andSendTimeGreaterThan(Long value) {
             addCriterion("send_time >", value, "sendTime");
             return (Criteria) this;
         }
 
-        public Criteria andSendTimeGreaterThanOrEqualTo(Integer value) {
+        public Criteria andSendTimeGreaterThanOrEqualTo(Long value) {
             addCriterion("send_time >=", value, "sendTime");
             return (Criteria) this;
         }
 
-        public Criteria andSendTimeLessThan(Integer value) {
+        public Criteria andSendTimeLessThan(Long value) {
             addCriterion("send_time <", value, "sendTime");
             return (Criteria) this;
         }
 
-        public Criteria andSendTimeLessThanOrEqualTo(Integer value) {
+        public Criteria andSendTimeLessThanOrEqualTo(Long value) {
             addCriterion("send_time <=", value, "sendTime");
             return (Criteria) this;
         }
 
-        public Criteria andSendTimeIn(List<Integer> values) {
+        public Criteria andSendTimeIn(List<Long> values) {
             addCriterion("send_time in", values, "sendTime");
             return (Criteria) this;
         }
 
-        public Criteria andSendTimeNotIn(List<Integer> values) {
+        public Criteria andSendTimeNotIn(List<Long> values) {
             addCriterion("send_time not in", values, "sendTime");
             return (Criteria) this;
         }
 
-        public Criteria andSendTimeBetween(Integer value1, Integer value2) {
+        public Criteria andSendTimeBetween(Long value1, Long value2) {
             addCriterion("send_time between", value1, value2, "sendTime");
             return (Criteria) this;
         }
 
-        public Criteria andSendTimeNotBetween(Integer value1, Integer value2) {
+        public Criteria andSendTimeNotBetween(Long value1, Long value2) {
             addCriterion("send_time not between", value1, value2, "sendTime");
             return (Criteria) this;
         }
@@ -234,52 +244,62 @@ public class YshuTaskExample {
             return (Criteria) this;
         }
 
-        public Criteria andSendPhoneEqualTo(Integer value) {
+        public Criteria andSendPhoneEqualTo(String value) {
             addCriterion("send_phone =", value, "sendPhone");
             return (Criteria) this;
         }
 
-        public Criteria andSendPhoneNotEqualTo(Integer value) {
+        public Criteria andSendPhoneNotEqualTo(String value) {
             addCriterion("send_phone <>", value, "sendPhone");
             return (Criteria) this;
         }
 
-        public Criteria andSendPhoneGreaterThan(Integer value) {
+        public Criteria andSendPhoneGreaterThan(String value) {
             addCriterion("send_phone >", value, "sendPhone");
             return (Criteria) this;
         }
 
-        public Criteria andSendPhoneGreaterThanOrEqualTo(Integer value) {
+        public Criteria andSendPhoneGreaterThanOrEqualTo(String value) {
             addCriterion("send_phone >=", value, "sendPhone");
             return (Criteria) this;
         }
 
-        public Criteria andSendPhoneLessThan(Integer value) {
+        public Criteria andSendPhoneLessThan(String value) {
             addCriterion("send_phone <", value, "sendPhone");
             return (Criteria) this;
         }
 
-        public Criteria andSendPhoneLessThanOrEqualTo(Integer value) {
+        public Criteria andSendPhoneLessThanOrEqualTo(String value) {
             addCriterion("send_phone <=", value, "sendPhone");
             return (Criteria) this;
         }
 
-        public Criteria andSendPhoneIn(List<Integer> values) {
+        public Criteria andSendPhoneLike(String value) {
+            addCriterion("send_phone like", value, "sendPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendPhoneNotLike(String value) {
+            addCriterion("send_phone not like", value, "sendPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendPhoneIn(List<String> values) {
             addCriterion("send_phone in", values, "sendPhone");
             return (Criteria) this;
         }
 
-        public Criteria andSendPhoneNotIn(List<Integer> values) {
+        public Criteria andSendPhoneNotIn(List<String> values) {
             addCriterion("send_phone not in", values, "sendPhone");
             return (Criteria) this;
         }
 
-        public Criteria andSendPhoneBetween(Integer value1, Integer value2) {
+        public Criteria andSendPhoneBetween(String value1, String value2) {
             addCriterion("send_phone between", value1, value2, "sendPhone");
             return (Criteria) this;
         }
 
-        public Criteria andSendPhoneNotBetween(Integer value1, Integer value2) {
+        public Criteria andSendPhoneNotBetween(String value1, String value2) {
             addCriterion("send_phone not between", value1, value2, "sendPhone");
             return (Criteria) this;
         }
@@ -294,52 +314,62 @@ public class YshuTaskExample {
             return (Criteria) this;
         }
 
-        public Criteria andStateEqualTo(Integer value) {
+        public Criteria andStateEqualTo(String value) {
             addCriterion("state =", value, "state");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotEqualTo(Integer value) {
+        public Criteria andStateNotEqualTo(String value) {
             addCriterion("state <>", value, "state");
             return (Criteria) this;
         }
 
-        public Criteria andStateGreaterThan(Integer value) {
+        public Criteria andStateGreaterThan(String value) {
             addCriterion("state >", value, "state");
             return (Criteria) this;
         }
 
-        public Criteria andStateGreaterThanOrEqualTo(Integer value) {
+        public Criteria andStateGreaterThanOrEqualTo(String value) {
             addCriterion("state >=", value, "state");
             return (Criteria) this;
         }
 
-        public Criteria andStateLessThan(Integer value) {
+        public Criteria andStateLessThan(String value) {
             addCriterion("state <", value, "state");
             return (Criteria) this;
         }
 
-        public Criteria andStateLessThanOrEqualTo(Integer value) {
+        public Criteria andStateLessThanOrEqualTo(String value) {
             addCriterion("state <=", value, "state");
             return (Criteria) this;
         }
 
-        public Criteria andStateIn(List<Integer> values) {
+        public Criteria andStateLike(String value) {
+            addCriterion("state like", value, "state");
+            return (Criteria) this;
+        }
+
+        public Criteria andStateNotLike(String value) {
+            addCriterion("state not like", value, "state");
+            return (Criteria) this;
+        }
+
+        public Criteria andStateIn(List<String> values) {
             addCriterion("state in", values, "state");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotIn(List<Integer> values) {
+        public Criteria andStateNotIn(List<String> values) {
             addCriterion("state not in", values, "state");
             return (Criteria) this;
         }
 
-        public Criteria andStateBetween(Integer value1, Integer value2) {
+        public Criteria andStateBetween(String value1, String value2) {
             addCriterion("state between", value1, value2, "state");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotBetween(Integer value1, Integer value2) {
+        public Criteria andStateNotBetween(String value1, String value2) {
             addCriterion("state not between", value1, value2, "state");
             return (Criteria) this;
         }
