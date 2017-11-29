@@ -35,7 +35,7 @@ public class UserController {
 
 	@ResponseBody
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ReData<Map<String, Object>> login(String user_id, String psw) {
-		return userService.login(user_id, psw);
+	public ReData<Map<String, Object>> login(String userId, String psw) {
+		return userService.login(userId, psw);
 	}
 }

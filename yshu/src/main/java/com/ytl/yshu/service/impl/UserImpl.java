@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import com.ytl.yshu.common.model.ReData;
@@ -46,7 +47,7 @@ public class UserImpl extends BaseImpl implements UserService {
 				}
 			}
 		} catch(Exception e) {
-			requestFail(reData, "登录失败！", reMap, e.getMessage());
+			requestFail(reData, "登录失败！", reMap, "请联系管理员!");
 		}
 		return reData;
 	}
@@ -73,7 +74,11 @@ public class UserImpl extends BaseImpl implements UserService {
 				}
 			}
 		} catch(Exception e) {
-			requestFail(reData, "注册失败！", reMap, e.getMessage());
+			if (e instanceof DuplicateKeyException) {
+				requestFail(reData, "注册失败！", reMap, "该用户已存在！");
+			} else {
+				requestFail(reData, "注册失败！", reMap, "请联系管理员！");
+			}
 		}
 		return reData;
 	}

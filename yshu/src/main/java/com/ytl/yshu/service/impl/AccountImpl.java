@@ -65,7 +65,7 @@ public class AccountImpl extends BaseImpl implements AccountService {
 				}
 			}
 		} catch(Exception e) {
-			requestFail(reData, "操作失败！", reMap, e.getMessage());
+			requestFail(reData, "操作失败！", reMap, "请联系管理员！");
 		}
 		return reData;
 	}
