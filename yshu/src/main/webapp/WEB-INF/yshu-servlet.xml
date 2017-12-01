@@ -27,6 +27,13 @@
 	<!-- <context:component-scan base-package="com.ytl.yshu">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>  
 	</context:component-scan> -->
+	
+	<mvc:resources location="/layui/" mapping="/layui/**"></mvc:resources>
+    
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    	<property name="prefix" value="/WEB-INF/jsp/user/"/>
+    	<property name="suffix" value=".jsp"/>
+    </bean>
     
     <!-- mybatis配置 -->
 	<!-- 配置数据源 TODO配置了durid不知道是否带了自动扫描功能，随容器启动扫描一次-->
