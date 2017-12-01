@@ -40,26 +40,26 @@
 		
 		<div style="background-color: white; margin:0 auto; margin-top: 10%; width:400px; height:100px; border:1px;">
 		
-			<form class="layui-form" action="">
+			<form class="layui-form" action="/api/user/register">
 			  <div class="layui-form-item">
 			    <label class="layui-form-label">账号</label>
 			    <div class="layui-input-inline">
-			      <input type="text" name="phone" required  lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+			      <input type="text" name="userId" required  lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
 			    </div>
 			    <div class="layui-form-mid layui-word-aux">有效手机号</div>
 			  </div>
 			  <div class="layui-form-item">
 			    <label class="layui-form-label">密码</label>
 			    <div class="layui-input-inline">
-			      <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+			      <input type="password" name="psw" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
 			    </div>
 			    <div class="layui-form-mid layui-word-aux">3位以上字符</div>
 			  </div>
 			  
 			  <div class="layui-form-item">
 			    <div class="layui-input-block">
-			      <button class="layui-btn" lay-submit lay-filter="formDemo">登录</button>
-			      <button class="layui-btn">注册</button>
+			      <button class="layui-btn" type="submit">登录</button>
+			      <button class="layui-btn" type="submit">注册</button>
 			    </div>
 			  </div>
 			</form>
